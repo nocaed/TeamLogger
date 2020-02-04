@@ -1,7 +1,8 @@
 package main;
 /**
- 
- @author  
+ *
+ * @author Thomas Brewer
+ * @author Michael McLaughlin
  */
 public class TeamMember 
 {

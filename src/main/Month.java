@@ -1,8 +1,9 @@
 package main;
 /**
- This class defines the common constants.
- You can use this class as is, or define the constants yourself.  
- @author Lily Chang
+ * This class defines the common constants.
+ * You can use this class as is, or define the constants yourself.
+ * @author Thomas Brewer
+ * @author Michael McLaughlin
  */
 public class Month 
 {
