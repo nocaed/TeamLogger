@@ -24,5 +24,5 @@ public class Month
    public static final int DAYS_FEB = 28;
    public static final int QUADRENNIAL = 4;
    public static final int CENTENNIAL = 100;
-   public static final int QUATERCENTENNIAL = 400;
+   public static final int QUARTERCENTENNIAL = 400;
 }
