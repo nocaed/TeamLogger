@@ -13,41 +13,82 @@ public class Team
    
    public Team()
    {
-      //this is the default constructor
+      team = new TeamMember[GROW_SIZE];
+      numMembers = 0;
    }
    
    private int find(TeamMember m)
    {
-       
+       for(int i = 0; i < team.length; i++) {
+          try{
+             if(team[i].equals(m))
+                return i;
+          }
+          catch(NullPointerException e){
+             continue;
+          }
+
+       }
+
+       return NOT_FOUND;
    }
    
    private void grow()
    {
-       
+      TeamMember[] temp = new TeamMember[team.length + GROW_SIZE];
+      for(int i = 0; i < team.length; i++) {
+         temp[i] = team[i];
+      }
+      team = temp;
    }
    
    public boolean isEmpty()
    {
-       
+       return numMembers == 0;
    }
    
    public void add(TeamMember m)
-   {     
-            
+   {
+      // TODO make storage more efficient by filling in null gaps created by object removal
+      if(numMembers == team.length)
+         grow();
+      team[numMembers] = m;
+      numMembers++;
    }
    
    public boolean remove(TeamMember m)
    {
-       
+      int removalIndex = find(m);
+      if(removalIndex == NOT_FOUND) {
+         return false;
+      }
+      team[removalIndex] = null;
+      return true;
    } 
    
    public boolean contains(TeamMember m)
    {
-      
+      for(TeamMember member : team) {
+         try {
+            if(member.equals(m))
+               return true;
+         }
+         catch(NullPointerException e) {
+            continue;
+         }
+      }
+      return false;
    } 
    
    public void print()
    {
-      //set up a for loop and call the toString() method
+      for(TeamMember member : team) {
+         try {
+            System.out.println(member);
+         }
+         catch(NullPointerException e) {
+            continue;
+         }
+      }
    } 
 }
