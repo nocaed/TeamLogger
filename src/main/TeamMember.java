@@ -37,7 +37,11 @@ public class TeamMember
     */
    public boolean equals(Object obj)
    {
-      return this.toString().equals(obj.toString());
+      if (!(obj instanceof TeamMember)) {
+         return false;
+      }
+      TeamMember check = (TeamMember)obj;
+      return this.toString().equals(check.toString());
    }
 
    /**
@@ -54,7 +58,20 @@ public class TeamMember
     */
    public static void main(String [] args)
    {
-      //testbed main; you must include test cases that exercise 
-      //the constructor and all methods in this class.
+      //Testing constructor
+      TeamMember tom = new TeamMember("Thomas Brewer", new Date("2/3/2020"));
+
+      //Testing toString
+      System.out.println("Team Member: " + tom);
+
+      //Testing get date
+      System.out.println("Date started: " + tom.getStartDate());
+      
+      //Testing equals method
+      TeamMember cloneOfTom = new TeamMember("Thomas Brewer", new Date("2/3/2020"));
+      TeamMember mike = new TeamMember("Michael McLaughlin", new Date("2/1/2020"));
+
+      System.out.println("Does Tom equal his clone: " + tom.equals(cloneOfTom));
+      System.out.println("Does Tom equal his friend mike: " + tom.equals(mike));
    }
 }
