@@ -64,7 +64,11 @@ public class Date
    @Override
    public boolean equals(Object obj)
    {
-      return day == obj.day && month == obj.month && year == obj.year;
+      if (!(obj instanceof Date)) {
+         return false;
+      }
+      Date dateObj = (Date)obj;
+      return day == dateObj.day && month == dateObj.month && year == dateObj.year;
    }
 
    public static void main(String[] args) {
