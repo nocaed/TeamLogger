@@ -69,11 +69,26 @@ public class Team
     */
    public void add(TeamMember m)
    {
-      // TODO make storage more efficient by filling in null gaps created by object removal
-      if(numMembers == team.length)
+      int addTarget = firstNull();
+      if(numMembers == team.length && addTarget == -1) {
          grow();
-      team[numMembers] = m;
+         team[numMembers] = m;
+      }
+      else
+         team[addTarget] = m;
       numMembers++;
+   }
+
+   /**
+    * Finds the first null reference in team.
+    * @return The index of the first null reference in team, and returns -1 if there are no null references.
+    */
+   private int firstNull() {
+      for(int i = 0; i < team.length; i++) {
+         if(team[i] == null)
+            return i;
+      }
+      return NOT_FOUND;
    }
 
    /**
