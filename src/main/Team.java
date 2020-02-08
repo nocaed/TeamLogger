@@ -69,27 +69,13 @@ public class Team
     */
    public void add(TeamMember m)
    {
-      int addTarget = firstNull();
-      if(numMembers == team.length && addTarget == -1) {
+      if(numMembers == team.length)
          grow();
-         team[numMembers] = m;
-      }
-      else
-         team[addTarget] = m;
+
+      team[numMembers] = m;
       numMembers++;
    }
 
-   /**
-    * Finds the first null reference in team.
-    * @return The index of the first null reference in team, and returns -1 if there are no null references.
-    */
-   private int firstNull() {
-      for(int i = 0; i < team.length; i++) {
-         if(team[i] == null)
-            return i;
-      }
-      return NOT_FOUND;
-   }
 
    /**
     * Remove a target TeamMember from the array.
@@ -102,7 +88,8 @@ public class Team
       if(removalIndex == NOT_FOUND) {
          return false;
       }
-      team[removalIndex] = null;
+      team[removalIndex] = team[numMembers];
+      team[numMembers] = null;
       numMembers--;
       return true;
    }
