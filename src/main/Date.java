@@ -42,21 +42,34 @@ public class Date
    
    public boolean isValid()
    {
-       // TODO this. ;)
+      switch(month) {
+         case Month.JAN: case Month.MAR: case Month.MAY: case Month.JUL: case Month.AUG: case Month.OCT: case Month.DEC:
+            return day >= 1 && day <= Month.DAYS_ODD;
+         case Month.APR: case Month.JUN: case Month.SEP: case Month.NOV:
+            return day >= 1 && day <= Month.DAYS_EVEN;
+         case Month.FEB:
+            boolean leapYear = year % Month.QUADRENNIAL == 0 && year % Month.CENTENNIAL != 0 && year % Month.QUARTERCENTENNIAL == 0;
+            return (day <= Month.DAYS_FEB + 1 && leapYear) || (day <= Month.DAYS_FEB && !leapYear);
+         default:
+            return false;
+      }
    }
    
    @Override
    public String toString()
    {
-       //use the format "month/day/year"
       return month + "/" + day + "/" + year;
    }
    
    @Override
    public boolean equals(Object obj)
    {
-       return day == obj.day || month == obj.month || year == obj.year;
-   }  
+      return day == obj.day && month == obj.month && year == obj.year;
+   }
+
+   public static void main(String[] args) {
+      // TODO testbed
+   }
 }
 
 
