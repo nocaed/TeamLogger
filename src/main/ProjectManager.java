@@ -1,4 +1,5 @@
 package main;
+import java.util.Scanner;
 /**
  *
  * @author Thomas Brewer
@@ -11,19 +12,28 @@ public class ProjectManager
    Team cs213;
    public void run()
    {
-       
+      cs213 = new Team();
       boolean done = false;
-      while ( !done )
+      while (!done)
       {
          String command = stdin.next();
-         switch (                )  
+         switch (command.charAt(0))
          {   
-            case 'A': add();
+            case 'A':
+              add();
 		      break; 
-            case  
-            case               
-            case     
-            default: //deal with bad command here 
+            case 'R':
+               remove();
+               break;
+            case 'P':
+               print();
+               break;
+            case 'Q':
+               // same as P but you end the program afterwards
+               break;
+            default:
+               //deal with bad command here
+               break;
          }  
       }
       //write java code before you terminate the program
@@ -44,6 +54,11 @@ public class ProjectManager
    
    private void print()
    {
-      //must check if the team has 0 members. 
+      if(cs213.isEmpty())
+         System.out.println("We have 0 team members!");
+      else {
+         System.out.println("We have the following team members:");
+         cs213.print();
+      }
    }   
 } //ProjectManager
