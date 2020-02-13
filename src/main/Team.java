@@ -36,7 +36,6 @@ public class Team
           catch(NullPointerException e){
              continue;
           }
-
        }
 
        return NOT_FOUND;
@@ -120,6 +119,8 @@ public class Team
    {
       for(TeamMember member : team) {
          try {
+            if (member == null)
+               continue;
             System.out.println(member);
          }
          catch(NullPointerException e) {

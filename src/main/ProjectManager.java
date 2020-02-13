@@ -8,48 +8,84 @@ import java.util.Scanner;
  
 public class ProjectManager
 {
-   Scanner stdin;
+   Scanner stdin = new Scanner(System.in);
    Team cs213;
+
    public void run()
    {
       cs213 = new Team();
       boolean done = false;
+
       while (!done)
       {
-         String command = stdin.next();
+         String command = stdin.nextLine();
          switch (command.charAt(0))
          {   
             case 'A':
-              add();
+              add(command);
 		      break; 
             case 'R':
-               remove();
+               remove(command);
                break;
             case 'P':
                print();
                break;
             case 'Q':
-               // same as P but you end the program afterwards
+               print();
+               done = true;
                break;
             default:
-               //deal with bad command here
+               System.out.println("Command '" + command.charAt(0) + "' not supported!");
                break;
          }  
       }
-      //write java code before you terminate the program
+      System.out.println("The team is ready to go!");
    } //run()
    
-   private void add()
+   private void add(String memberToAdd)
    {
-      	//must check if the date is valid
-	//must call the contains() method to check if a given 
-	//team member is in the team already
+      String[] memberInfo = memberToAdd.split(" ");
+
+      //must check if the date is valid
+      Date date = new Date(memberInfo[2]);
+      if (!date.isValid()) {
+         System.out.println(memberInfo[2] + " is not a valid date!");
+         return;
+      }
+
+      TeamMember newMember = new TeamMember(memberInfo[1], date);
+
+      //must call the contains() method to check if a given
+      //team member is in the team already
+      if (cs213.contains(newMember)) {
+         System.out.println(newMember + " is already in the team.");
+         return;
+      }
+
+      System.out.println(newMember + " has joined the team.");
+      cs213.add(newMember);
    }
    
-   private void remove()
+   private void remove(String memberToRemove)
    {
+      String[] memberInfo = memberToRemove.split(" ");
+
       //must check if the date is valid
-	   
+      Date date = new Date(memberInfo[2]);
+      if (!date.isValid()) {
+         System.out.println(memberInfo[2] + " is not a valid date!");
+         return;
+      }
+
+      TeamMember member = new TeamMember(memberInfo[1], date);
+
+      if (!cs213.contains(member)) {
+         System.out.println(member + " is not a team member.");
+         return;
+      }
+
+      System.out.println(member + " has left the team.");
+      cs213.remove(member);
    }
    
    private void print()
