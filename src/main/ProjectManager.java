@@ -1,4 +1,5 @@
 package main;
+
 import java.util.Scanner;
 /**
  *
@@ -95,6 +96,7 @@ public class ProjectManager
       else {
          System.out.println("We have the following team members:");
          cs213.print();
+         System.out.println("-- end of the list --");
       }
    }   
 } //ProjectManager

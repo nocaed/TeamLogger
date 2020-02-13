@@ -48,7 +48,8 @@ public class Date
          case Month.APR: case Month.JUN: case Month.SEP: case Month.NOV:
             return day >= 1 && day <= Month.DAYS_EVEN;
          case Month.FEB:
-            boolean leapYear = year % Month.QUADRENNIAL == 0 && year % Month.CENTENNIAL != 0 && year % Month.QUARTERCENTENNIAL == 0;
+            boolean leapYear = ((year % Month.QUADRENNIAL == 0 && year % Month.CENTENNIAL == 0 && year % Month.QUARTERCENTENNIAL == 0)
+                    || (year % Month.QUADRENNIAL == 0 && year % Month.CENTENNIAL != 0));
             return (day <= Month.DAYS_FEB + 1 && leapYear) || (day <= Month.DAYS_FEB && !leapYear);
          default:
             return false;

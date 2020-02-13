@@ -47,9 +47,7 @@ public class Team
    private void grow()
    {
       TeamMember[] temp = new TeamMember[team.length + GROW_SIZE];
-      for(int i = 0; i < team.length; i++) {
-         temp[i] = team[i];
-      }
+      System.arraycopy(team, 0, temp, 0, team.length);
       team = temp;
    }
 
