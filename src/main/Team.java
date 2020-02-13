@@ -85,8 +85,8 @@ public class Team
       if(removalIndex == NOT_FOUND) {
          return false;
       }
-      team[removalIndex] = team[numMembers];
-      team[numMembers] = null;
+      team[removalIndex] = team[numMembers - 1];
+      team[numMembers - 1] = null;
       numMembers--;
       return true;
    }
