@@ -59,10 +59,8 @@ public class TeamMember
     */
    public static void main(String [] args)
    {
-      //Testing constructor
+      //Testing constructor/toString
       TeamMember tom = new TeamMember("Thomas Brewer", new Date("2/3/2020"));
-
-      //Testing toString
       System.out.println("Team Member: " + tom);
 
       //Testing get date
