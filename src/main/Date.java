@@ -1,16 +1,23 @@
 package main;
 import java.util.StringTokenizer;
+
 /**
- *
+ * The date class contains a series of methods involved around creating and using Date objects.
+ * Also included is a main method to be used only for testing purposes.
  * @author Thomas Brewer
  * @author Michael McLaughlin
  */
+
 public class Date 
 {
    private int  day;
    private int  month;
    private int  year;
-   
+
+   /**
+    * Constructor that creates a new date object based on the given string.
+    * @param d String representing the date.  Formatted month/day/year.
+    */
    public Date(String d)
    {
       StringTokenizer st = new StringTokenizer(d, "/");
@@ -32,14 +39,22 @@ public class Date
          i++;
       }
    }
-   
+
+   /**
+    * Constructor that creates a deep copy of a date object for security reasons.
+    * @param d Date object.
+    */
    public Date(Date d)
    {
       day = d.day;
       month = d.month;
       year = d.year;
-   }      
-   
+   }
+
+   /**
+    * Checks to see if the called Date object is valid.
+    * @return True if valid, false if not.
+    */
    public boolean isValid()
    {
       switch(month) {
@@ -55,13 +70,22 @@ public class Date
             return false;
       }
    }
-   
+
+   /**
+    * Turn the called date object into a String.
+    * @return Date obj as String, formatted month/day/year.
+    */
    @Override
    public String toString()
    {
       return month + "/" + day + "/" + year;
    }
-   
+
+   /**
+    * Equals method for Date obj comparison
+    * @param obj Date object
+    * @return True if dates are equal, false if not.
+    */
    @Override
    public boolean equals(Object obj)
    {
@@ -72,8 +96,28 @@ public class Date
       return day == dateObj.day && month == dateObj.month && year == dateObj.year;
    }
 
+   /**
+    * Testbed main for Date, which tests the various methods for success.
+    */
    public static void main(String[] args) {
-      // TODO testbed
+      //Testing constructor
+      Date thisDate = new Date("2/17/2020");
+      System.out.println(thisDate);
+
+      //Testing deep copy
+      Date thisDateCopy = new Date(thisDate);
+      thisDate = null;
+      System.out.println(thisDateCopy);
+
+      //Testing isValid
+      Date invalidDate = new Date("2/35/2020");
+      System.out.println("Is 2/35/2020 a valid date?: " + invalidDate.isValid());
+
+      //Testing toString
+      System.out.println(invalidDate);
+
+      //Testing equals method
+      System.out.println("Are 2/17/2020 and 2/35/2020 the same date?: " + thisDateCopy.equals(invalidDate));
    }
 }
 

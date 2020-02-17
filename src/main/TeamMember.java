@@ -1,6 +1,7 @@
 package main;
 /**
- *
+ * This class performs various operations in a given Team Member.
+ * Also included is a main method to be used only for testing purposes.
  * @author Thomas Brewer
  * @author Michael McLaughlin
  */
@@ -54,7 +55,7 @@ public class TeamMember
    }
 
    /**
-    * TODO test bed for this class.
+    * Testbed main for TeamMember, which tests the various methods for success.
     */
    public static void main(String [] args)
    {

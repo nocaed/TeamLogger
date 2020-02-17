@@ -1,6 +1,7 @@
 package main;
 /**
- *
+ * This class contains operations that work directly with the team object to grow a team.
+ * TeamMembers are held in an array that begins with a size of 4, and increases with a size of 4 upon maximization.
  * @author Thomas Brewer
  * @author Michael McLaughlin
  */
@@ -47,7 +48,9 @@ public class Team
    private void grow()
    {
       TeamMember[] temp = new TeamMember[team.length + GROW_SIZE];
-      System.arraycopy(team, 0, temp, 0, team.length);
+      for(int i = 0; i < team.length; i++) {
+         temp[i] = team[i];
+      }
       team = temp;
    }
 

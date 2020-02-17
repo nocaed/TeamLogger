@@ -1,8 +1,9 @@
 package main;
 
 import java.util.Scanner;
+
 /**
- *
+ * This class performs various team building operations, including communications with the user.
  * @author Thomas Brewer
  * @author Michael McLaughlin
  */
@@ -12,6 +13,9 @@ public class ProjectManager
    Scanner stdin = new Scanner(System.in);
    Team cs213;
 
+   /**
+    * Begins the team building process.  Creates a new Team, and runs I/O to the user as necessary.
+    */
    public void run()
    {
       cs213 = new Team();
@@ -42,7 +46,11 @@ public class ProjectManager
       }
       System.out.println("The team is ready to go!");
    } //run()
-   
+
+   /**
+    * Adds a new member to the team.
+    * @param memberToAdd String representing the person to add with the following format: "command name date"
+    */
    private void add(String memberToAdd)
    {
       String[] memberInfo = memberToAdd.split(" ");
@@ -66,7 +74,11 @@ public class ProjectManager
       System.out.println(newMember + " has joined the team.");
       cs213.add(newMember);
    }
-   
+
+   /**
+    * Removes a member from the team.
+    * @param memberToRemove String representing the person to remove with the following format: "command name date"
+    */
    private void remove(String memberToRemove)
    {
       String[] memberInfo = memberToRemove.split(" ");
@@ -88,7 +100,10 @@ public class ProjectManager
       System.out.println(member + " has left the team.");
       cs213.remove(member);
    }
-   
+
+   /**
+    * Prints out the current team members to the user.
+    */
    private void print()
    {
       if(cs213.isEmpty())
